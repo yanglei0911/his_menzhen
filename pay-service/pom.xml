@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gateway</artifactId>
+    <artifactId>pay-service</artifactId>
 
     <!--添加编译级别-->
     <properties>
@@ -17,18 +17,24 @@
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
     </properties>
 
+    <!--本项目所需的依赖-->
     <dependencies>
-        <!--  zuul是阻塞式编程
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
+        </dependency>
+        <!--向外界请求服务，除了ribbon以外，还可以用已经封装了ribbon以及hystrix(熔断器)的feign来进行服务调用-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-        </dependency>-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

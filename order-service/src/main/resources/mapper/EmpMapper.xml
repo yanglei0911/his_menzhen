@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.order.mapper.EmpMapper">
+
+
+        <resultMap id="BaseResultMap" type="com.neuedu.order.model.Emp">
+            <result column="empno" jdbcType="VARCHAR" property="id" />
+            <result column="ename" jdbcType="VARCHAR" property="eName" />
+            <result column="job" jdbcType="VARCHAR" property="job" />
+
+        </resultMap>
+
+    <select id="queryEmpById" parameterType="String" resultMap="BaseResultMap">
+        select empno,ename,job from EMP where EMPNO = #{id}#;
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,46 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: order-service
+  datasource:
+    hikari:
+      maximum-pool-size: 20
+      max-lifetime: 30000
+      idle-timeout: 30000
+      data-source-properties:
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        cachePrepStmts: true
+        useServerPrepStmts: true
+    url: jdbc:mysql://127.0.0.1:3306/test1?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+eureka:
+  client:
+    service-url:
+      default-zone: http://127.0.0.1:8761/eureka
+#启动feign的熔断器功能
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    enabled: true   # 开启httpclient，支持连接池
+    max-connections: 100
+    max-connections-per-route: 50   # 单个路径的最大连接数
+mybatis:
+  # model的包
+  type-aliases-package: com.neuedu.order
+  # 用来指定mapper位置
+  mapper-locations: classpath*:/mapper/**/*.xml
+
+# 线程池配置
+thread-pool:
+  # 核心线程池数
+  corePoolSize: 8
+  #最大线程
+  maxPoolSize: 16
+  #队列容量
+  queueCapacity: 5
+  #空闲线程存活时间
+  keepAliveSeconds: 300

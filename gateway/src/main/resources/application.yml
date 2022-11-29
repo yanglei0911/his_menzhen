@@ -3,23 +3,35 @@ server:
 spring:
   application:
     name: gateway
+  cloud:
+    gateway:
+      routes:   # 路由配置
+        - id: user-service
+          uri: lb://user-service   # 路由的目标地址
+          predicates:   # 路由断言
+            - Path=/user/**
+          filters:
+#            - RewritePath=/user/(?<segment>.*), /emp/$\{segment}
+             - RewritePath=/user,/emp
+
+
 eureka:
   client:
     service-url:
       default-zone: http://127.0.0.1:8761/eureka
-#映射不同的路径到各个微服务中
-zuul:
-  routes:
-    menzhen:
-      path: /api/menzhen/**
-      serviceId: menzhen
-    doctor:
-      path: /api/doctor/**
-        serviceId: doctor
-    drug:
-      path: /api/drug/**
-        serviceId: drug
-    global:
-      path: /api/global/**
-        serviceId: global
+#### 映射不同的路径到各个微服务中
+#zuul:
+#  routes:
+#    menzhen:
+#      path: /api/menzhen/**
+#      serviceId: menzhen
+#    doctor:
+#      path: /api/doctor/**
+#        serviceId: doctor
+#    drug:
+#      path: /api/drug/**
+#        serviceId: drug
+#    global:
+#      path: /api/global/**
+#        serviceId: global
 
