@@ -19,7 +19,7 @@ feign:
   client:
     config:
       # 对应的微服务
-      drug:
+      user-service:
         logger-level: FULL
         # 连接超时时间，默认2s
         connect-timeout:  5000
