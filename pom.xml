@@ -8,7 +8,7 @@
         <module>order-service</module>
         <module>pay-service</module>
         <module>global</module>
-        <module>registry-server</module>
+        <module>eureka-server</module>
         <module>gateway</module>
         <module>common</module>
         <module>feign-api</module>
